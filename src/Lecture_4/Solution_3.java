@@ -1,67 +1,35 @@
 package Lecture_4;
 
+
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.InputStream;
+
 public class Solution_3 {
-    public static void main(String[] args) {
-        Cat cat = new Cat();
-        Eat cat1 = new Cat();
-        Eat.eat();
-        Cat.eat();
-        new Cat();
-        Cat.eat();
-        Solution_3.Eat.eat();
-        Solution_3.Cat.eat();
-    }
+    public static void main(String[] args) throws Exception {
+        InputStream inputStream = null;
+        BufferedInputStream buffer = null;
 
-    //может двигаться
-    public interface Movable {
-        void move();
-    }
+        try {
 
-    //может быть съеден
-    public interface Edible {
-        void beEaten();
-    }
+            inputStream = new FileInputStream("C:\\Users\\Home2020\\Desktop\\1.txt");
 
-    //может кого-нибудь съесть
-    public interface Eat {
-        static void eat() {
-            System.out.println("Iterf");
-        }
-    }
+            buffer = new BufferedInputStream(inputStream);
 
-    static class Cat implements Movable, Edible, Eat {
+            while(buffer.available()>0) {
 
-        public void move() {
+                char c = (char)buffer.read();
 
-        }
+                System.out.print("" + c);
+            }
+        } catch(Exception e) {
 
-        public void beEaten() {
+            e.printStackTrace();
 
-        }
+        } finally {
 
-        public static void eat(){
-            System.out.println("Class");
-        }
-
-    }
-
-    class Dog implements Movable, Eat {
-        public void move() {
-
-        }
-
-        public void eat(){
-            System.out.println();
-        }
-    }
-
-    class Mouse implements Movable, Edible {
-        public void move() {
-
-        }
-
-        public void beEaten() {
-
+            inputStream.close();
+            buffer.close();
         }
     }
 }
