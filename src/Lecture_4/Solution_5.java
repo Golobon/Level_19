@@ -14,6 +14,7 @@ public class Solution_5 {
         while (bR.ready()) {
             System.out.println(bR.readLine());
         }
+        fIS.close();
         bR.close();
     }
 }
