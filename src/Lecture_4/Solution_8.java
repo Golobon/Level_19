@@ -1,21 +1,21 @@
 package Lecture_4;
 
+
 import java.io.*;
-import java.util.Scanner;
+import java.io.IOException;
 
 public class Solution_8 {
     public static void main(String[] args) throws IOException {
-        StringBuilder sB = new StringBuilder();
+        String path = new BufferedReader(new InputStreamReader(System.in)).readLine();
+        BufferedWriter bW = new BufferedWriter(new FileWriter(path));
         while (true) {
             String str = new BufferedReader(new InputStreamReader(System.in)).readLine();
             if (str.equals("exit")){
-                sB.append(str).append("\n");
+                bW.write(str);
                 break;
             }
-            sB.append(str).append("\n");
+            bW.write(str + "\n");
         }
-        FileWriter fW = new FileWriter("Cool");
-        BufferedWriter bW = new BufferedWriter(fW);
-        bW.write(String.valueOf(sB));
+        bW.close();
     }
 }
